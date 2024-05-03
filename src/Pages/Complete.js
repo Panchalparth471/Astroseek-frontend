@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -31,7 +31,7 @@ function Complete()
         
     );
 }
-=======
+
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -64,5 +64,5 @@ function Complete()
         
     );
 }
->>>>>>> ba41696de80d4608382a85a0a71fea55627f0be9
+
 export default Complete;
