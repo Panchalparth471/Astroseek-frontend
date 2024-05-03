@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import Vector from "../Assets/Vector.png"
 
 function Main()
