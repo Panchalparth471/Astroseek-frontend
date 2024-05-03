@@ -100,4 +100,3 @@ export default Navbar2;
 
 
 
->>>>>>> ba41696de80d4608382a85a0a71fea55627f0be9
