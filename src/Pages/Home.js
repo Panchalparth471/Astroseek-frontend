@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import Navbar from "../Components/Navbar";
 import Main from "../Components/Main";
 import Icons from "../Components/Icons";
@@ -27,7 +27,7 @@ function Home()
     )
 }
 
-=======
+
 import Navbar from "../Components/Navbar";
 import Main from "../Components/Main";
 import Icons from "../Components/Icons";
@@ -56,5 +56,5 @@ function Home()
     )
 }
 
->>>>>>> ba41696de80d4608382a85a0a71fea55627f0be9
+
 export default Home;
