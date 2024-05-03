@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import Footer from "../Components/Footer";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
@@ -164,7 +164,7 @@ theme: "light",
     );
 }
 
-=======
+
 import Footer from "../Components/Footer";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
@@ -330,5 +330,4 @@ theme: "light",
     );
 }
 
->>>>>>> ba41696de80d4608382a85a0a71fea55627f0be9
 export default Login;
