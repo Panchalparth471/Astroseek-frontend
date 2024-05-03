@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { useContext, useEffect } from "react";
 import { AppContext } from "../Context/AppContext";
 import Astrologers from "../Components/Astrologers";
@@ -106,7 +106,6 @@ function Astrologer()
     
 }
 
-=======
 import { useContext, useEffect } from "react";
 import { AppContext } from "../Context/AppContext";
 import Astrologers from "../Components/Astrologers";
@@ -214,5 +213,4 @@ function Astrologer()
     
 }
 
->>>>>>> ba41696de80d4608382a85a0a71fea55627f0be9
 export default Astrologer;
