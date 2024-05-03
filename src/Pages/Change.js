@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../Components/Navbar";
@@ -120,7 +120,7 @@ theme: "light",
     );
 
 }
-=======
+
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../Components/Navbar";
@@ -242,5 +242,4 @@ theme: "light",
     );
 
 }
->>>>>>> ba41696de80d4608382a85a0a71fea55627f0be9
 export default Change
