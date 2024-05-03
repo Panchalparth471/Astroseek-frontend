@@ -64,14 +64,3 @@ navigate("/signup");
 export default Navbar;
 
 
-
-
-
-
-
-
-
-
-
-
->>>>>>> ba41696de80d4608382a85a0a71fea55627f0be9
