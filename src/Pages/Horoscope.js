@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import Navbar from "../Components/Navbar";
 import Navbar2 from "../Components/Navbar2";
 import Footer from "../Components/Footer";
@@ -110,7 +110,7 @@ try {
 }
 
 export default Horoscope;
-=======
+
 import Navbar from "../Components/Navbar";
 import Navbar2 from "../Components/Navbar2";
 import Footer from "../Components/Footer";
@@ -222,4 +222,4 @@ try {
 }
 
 export default Horoscope;
->>>>>>> ba41696de80d4608382a85a0a71fea55627f0be9
+
