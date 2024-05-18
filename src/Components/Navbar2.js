@@ -44,7 +44,7 @@ navigate("/signup");
                 <div className="p-2 flex justify-center items-center cursor-pointer hover:scale-110 transition-all">Chat with Astrologer</div>
                  <div className=" gap-2 p-2 relative flex justify-center items-center">
                     {formData.email.split("@")[0]} <div className='rounded-full w-[40px] h-[40px] bg-[#FF8A00]'>
-                       <img onClick={imageHandler} className='w-full cursor-pointer h-full rounded-full' src={`https://api.dicebear.com/5.x/initials/svg?seed=${formData.user.email}`} />
+                       <img onClick={imageHandler} className='w-full cursor-pointer h-full rounded-full' src={`https://api.dicebear.com/5.x/initials/svg?seed=${formData.email}`} />
                    </div>
                 </div>
             </div>
