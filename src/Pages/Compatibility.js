@@ -9,7 +9,7 @@ import Spinner from "../Components/Spinner";
 
 function Compatibility()
 {
-     const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
+     const { token, setToken } = useContext(AppContext);
     const [zodiac, setZodiac] = useState("0.aries");
     const [zodiac2, setZodiac2] = useState("0.aries");
     const [click, setClick] = useState(false);
@@ -44,7 +44,7 @@ function Compatibility()
         console.log(sign2);
         event.preventDefault();
 
-  const url =   `${process.env.REACT_APP_BASE_URL}/compatibility`;
+  const url =   `http://localhost:4000/api/v1/compatibility`;
 const options = {
     method: 'POST',
       headers: {
@@ -73,9 +73,7 @@ try {
     return (
 
               <>
-              {
-          isLoggedIn ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)
-        }
+            {token ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)}
             {
                 loading?(<Spinner></Spinner>):( <div className="flex min-h-[450px] px-3 mt-32 flex-col items-center justify-evenly"> 
                 <div className="text-[50px] max-md:text-[30px] font-bold">Compatibility</div>
@@ -134,4 +132,3 @@ try {
 
 
 export default Compatibility;
-
