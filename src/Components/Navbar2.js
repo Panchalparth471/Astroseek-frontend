@@ -10,7 +10,7 @@ function Navbar2() {
     const [isOpen, setOpen] = useState(false)
     const navigate = useNavigate();
     const { savedUser } = useContext(AppContext);
-    console.log("SAVED",savedUser);
+    console.log("SAVED",savedUser,savedUser.user);
 
 
     const imageHandler = () => {
@@ -43,8 +43,8 @@ navigate("/signup");
                 <div className="p-2 flex justify-center items-center  cursor-pointer hover:scale-110 transition-all"><a href='/horoscope'>Horoscope</a></div>
                 <div className="p-2 flex justify-center items-center cursor-pointer hover:scale-110 transition-all">Chat with Astrologer</div>
                  <div className=" gap-2 p-2 relative flex justify-center items-center">
-                    {savedUser.email.split("@")[0]} <div className='rounded-full w-[40px] h-[40px] bg-[#FF8A00]'>
-                       <img onClick={imageHandler} className='w-full cursor-pointer h-full rounded-full' src={`https://api.dicebear.com/5.x/initials/svg?seed=${savedUser.email}`} />
+                    {savedUser.user.email.split("@")[0]} <div className='rounded-full w-[40px] h-[40px] bg-[#FF8A00]'>
+                       <img onClick={imageHandler} className='w-full cursor-pointer h-full rounded-full' src={`https://api.dicebear.com/5.x/initials/svg?seed=${savedUser.user.email}`} />
                    </div>
                 </div>
             </div>
@@ -64,8 +64,8 @@ navigate("/signup");
                 <a href="/horoscope" className="place-self-center">Horoscope</a>
                 <a href="/" className="place-self-center">Chat With Astrologer</a>
        <div className=" gap-2 p-2 relative flex justify-center max-[300px]:text-[12px] items-center">
-                    {savedUser.email.split("@")[0]} <div className='rounded-full max-[300px]:w-[25px] max-[300px]:h-[25px] w-[40px] h-[40px] bg-[#FF8A00]'>
-                       <img  onClick={imageHandler} className='w-full  h-full rounded-full' src={`https://api.dicebear.com/5.x/initials/svg?seed=${savedUser.email}`} />
+                    {savedUser.user.email.split("@")[0]} <div className='rounded-full max-[300px]:w-[25px] max-[300px]:h-[25px] w-[40px] h-[40px] bg-[#FF8A00]'>
+                       <img  onClick={imageHandler} className='w-full  h-full rounded-full' src={`https://api.dicebear.com/5.x/initials/svg?seed=${savedUser.user.email}`} />
                                 </div>
                                 </div>
 
