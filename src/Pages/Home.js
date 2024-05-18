@@ -11,10 +11,11 @@ import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
 function Home()
 {
-      const { token, setToken } = useContext(AppContext);
+ const { token } = useContext(AppContext);
+      console.log(token)
     return (
       <>
-        {token ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)}
+   {token ? <Navbar2 /> : <Navbar />}
     
       <Main></Main>
       <Icons></Icons>
