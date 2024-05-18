@@ -1,4 +1,3 @@
-
 import { useContext, useEffect } from "react";
 import { AppContext } from "../Context/AppContext";
 import Astrologers from "../Components/Astrologers";
@@ -22,7 +21,7 @@ function Astrologer()
   const { name, setName } = useContext(AppContext);
     const [data, setData] = useState([]);
     const { savedUser } = useContext(AppContext);
-  const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
+  const { token, setToken } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   let response;
     
@@ -46,20 +45,19 @@ function Astrologer()
     {
       console.log(e);
     }
-    setLoading(false);
   }
 
     
 
     const [isOpen, setOpen] = useState(false)
-     useEffect(() => {
-    if (!isLoggedIn) {
-      Handler();
-       }
-       
-       fetchAstrologers();
-
-     }, [isLoggedIn]);
+      useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          Handler();
+        } else {
+            setLoading(false);
+        }
+    }, []);
   
   
   
@@ -105,7 +103,5 @@ function Astrologer()
     );
     
 }
-
-
 
 export default Astrologer;
