@@ -44,7 +44,7 @@ function Compatibility()
         console.log(sign2);
         event.preventDefault();
 
-  const url =   `http://localhost:4000/api/v1/compatibility`;
+  const url =   `${process.env.REACT_APP_BASE_URL}/compatibility`;
 const options = {
     method: 'POST',
       headers: {
