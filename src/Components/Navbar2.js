@@ -10,7 +10,7 @@ function Navbar2() {
     const [isOpen, setOpen] = useState(false)
     const navigate = useNavigate();
     const { savedUser } = useContext(AppContext);
-    console.log("SAVED",savedUser,savedUser.user);
+    console.log("SAVED",savedUser);
 
 
     const imageHandler = () => {
