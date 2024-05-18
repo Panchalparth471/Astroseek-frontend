@@ -1,4 +1,3 @@
-
 import Footer from "../Components/Footer";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
@@ -10,125 +9,92 @@ import Spinner from "../Components/Spinner";
 
 function Login() {
     const navigate = useNavigate();
-    const {token, setToken} = useState(AppContext);
+    const { setToken, setSavedUser, setFormData } = useContext(AppContext);
     const [showPassword, setshowPassword] = useState(false);
-    const { savedUser, setSavedUser } = useContext(AppContext);
-     const [loading, setLoading] = useState(false);
-    const { formData, setFormData } = useContext(AppContext);
-    const { userData, setUserData } = useContext(AppContext);
+    const [loading, setLoading] = useState(false);
+    const formDataInitialState = {
+        email: "",
+        password: ""
+    };
+    const [formData, setFormData] = useState(formDataInitialState);
 
-     const [types, settype] = useState("password");
+    const typeChange = () => {
+        setshowPassword(prev => !prev);
+    };
 
-    function typeChange()
-    {
-        setshowPassword(prev => !prev)
-        if (types === "password")
-        {
-            settype("text")
-        }
-        else {
-            settype("password")
-        }
-    }
+    const changeHandler = (event) => {
+        const { name, value } = event.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
 
-     function changeHandler(event) {
-    const { name, value, type } = event.target;
-    setFormData(
-      (prev)=>({...prev,[name]:value})
-    )
-    } 
-    
-     function submitHandler(event) {
-    event.preventDefault();
-
-    console.log("Finally printing the value of Form Data:");
-    console.log(formData)
-    }
-    
-
-const handleClick = () => {
-navigate("/signup");
+    const handleClick = () => {
+        navigate("/signup");
     };
 
     const forgotPassword = () => {
-        navigate("/forgot")
+        navigate("/forgot");
     };
 
+    const tokenHandler = (t) => {
+        setToken(t);
+    };
 
-  const createUser = async (event) => {
-       setLoading(true);
-    try {
-       
+    const createUser = async (event) => {
         event.preventDefault();
-        const saveUser = await fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData)
-        });
-        const response =await saveUser.json();
-     
+        setLoading(true);
+        try {
+            const saveUser = await fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData)
+            });
+            const response = await saveUser.json();
 
-        console.log("FORM RESPONSE......", response);
-
-
-        if (saveUser.ok)
-        {
-            setSavedUser(formData);
-    const t=localStorage.getItem("token");
-            setToken(t);
-            console.log("Token", t);
-                  toast.success('Login Successful!', {
-position: "top-center",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "light",
-
-                  });
-    
-            navigate("/Astrologers")
-        }
-        else {
-           
+            if (saveUser.ok) {
+                setSavedUser(formData);
+                const t = localStorage.getItem("token");
+                tokenHandler(t);
+                toast.success('Login Successful!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                navigate("/Astrologers");
+            } else {
                 toast.error('Wrong Password!', {
-position: "top-center",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "light",
-
-});
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
+        } catch (error) {
+            toast.error('Something Went Wrong', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            console.error("Error creating user:", error);
+        } finally {
+            setLoading(false);
         }
-      
-       
-    } catch (error) {
-               toast.error('Something Went Wrong', {
-position: "top-center",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "light",
-
-});
-        console.error("Error creating user:", error);
-       
-
-
-        }
-        
-         setLoading(false);
-}
+    };
 
     return (
         <>
