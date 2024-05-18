@@ -109,6 +109,9 @@ const handleClick = () => {
 navigate("/signup");
     };
 
+     const forgotPassword = () => {
+        navigate("/forgot")
+    };
     
     return (
         <>
