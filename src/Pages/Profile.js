@@ -10,7 +10,7 @@ function Profile() {
   const navigate = useNavigate();
   const { name } = useContext(AppContext);
   const [data, setData] = useState(null); // Initialize data as null
-  const { isLoggedIn } = useContext(AppContext);
+  const { token } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
 
   const Handler = () => {
@@ -37,11 +37,11 @@ function Profile() {
   };
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!token) {
       Handler();
     }
     fetchAstrologer();
-  }, [isLoggedIn]);
+  }, [token]);
 
   return (
     <>
