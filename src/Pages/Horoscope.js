@@ -1,4 +1,3 @@
-
 import Navbar from "../Components/Navbar";
 import Navbar2 from "../Components/Navbar2";
 import Footer from "../Components/Footer";
@@ -9,10 +8,10 @@ import Spinner from "../Components/Spinner";
 
 function Horoscope()
 {
-    const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
+    const { token, setToken } = useContext(AppContext);
     console.log("islogged",isLoggedIn);
     const [zodiac, setZodiac] = useState("1.aries");
-    const [day, setDay] = useState("today");
+    const [day, dayHandler] = useState("today");
     const [click, setClick] = useState(false);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
@@ -21,14 +20,6 @@ function Horoscope()
     {
         setZodiac(event.target.value)
         console.log(zodiac);
-        
-      
-    }
-
- function dayHandler(event)
-    {
-       setDay(event.target.value)
-	console.log(day);
         
       
     }
@@ -70,9 +61,8 @@ try {
     return (
 
               <>
-           {
-          isLoggedIn ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)
-        }
+      {token ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)}
+    
             {
                 loading ? (<Spinner></Spinner>) : (
                      <div className="flex min-h-[450px] px-3 mt-32 flex-col items-center justify-evenly"> 
@@ -118,6 +108,3 @@ try {
 }
 
 export default Horoscope;
-
-
-
