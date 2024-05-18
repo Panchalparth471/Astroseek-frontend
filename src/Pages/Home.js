@@ -14,11 +14,8 @@ import { AppContext } from "../Context/AppContext";
 function Home()
 {
         const t = localStorage.getItem("token");
-
-        useEffect(()=>{
         const {savedUser}=useContext(AppContext);
-        console.log("SAVED HOME",savedUser);
-        });
+        console.log(savedUser,{savedUser});
 
 
     return (
