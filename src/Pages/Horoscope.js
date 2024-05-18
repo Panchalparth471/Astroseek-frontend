@@ -10,7 +10,7 @@ function Horoscope()
 {
     const t = localStorage.getItem("token");
     const [zodiac, setZodiac] = useState("1.aries");
-    const [day, dayHandler] = useState("today");
+    const [day, setDay] = useState("today");
     const [click, setClick] = useState(false);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
@@ -23,6 +23,11 @@ function Horoscope()
       
     }
 
+   function dayHandler(event)
+	   {
+		   setDay(event.target.value)
+	   }
+	
 
     const submitHandler = async (event) => {
         setLoading(true);
