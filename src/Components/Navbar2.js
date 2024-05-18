@@ -9,7 +9,7 @@ function Navbar2() {
 
     const [isOpen, setOpen] = useState(false)
     const navigate = useNavigate();
-    const { formData, setFormData } = useContext(AppContext);
+    const { savedUser } = useContext(AppContext);
 
 
     const imageHandler = () => {
@@ -64,7 +64,7 @@ navigate("/signup");
                 <a href="/" className="place-self-center">Chat With Astrologer</a>
        <div className=" gap-2 p-2 relative flex justify-center max-[300px]:text-[12px] items-center">
                     {formData.email.split("@")[0]} <div className='rounded-full max-[300px]:w-[25px] max-[300px]:h-[25px] w-[40px] h-[40px] bg-[#FF8A00]'>
-                       <img  onClick={imageHandler} className='w-full  h-full rounded-full' src={`https://api.dicebear.com/5.x/initials/svg?seed=${formData.email}`} />
+                       <img  onClick={imageHandler} className='w-full  h-full rounded-full' src={`https://api.dicebear.com/5.x/initials/svg?seed=${savedUser.email}`} />
                                 </div>
                                 </div>
 
