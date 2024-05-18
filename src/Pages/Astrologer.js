@@ -65,7 +65,7 @@ function Astrologer()
     return (
         <>
             {
-                token  ? (<>
+                localStorage.getItem("token")  ? (<>
            
              <Navbar2></Navbar2>
             <div className="flex flex-col h-[700px] max-md:h-[1000px] mt-32 w-[100vw] items-center gap-16">
