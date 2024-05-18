@@ -1,4 +1,3 @@
-
 import Navbar from "../Components/Navbar";
 import Main from "../Components/Main";
 import Icons from "../Components/Icons";
@@ -14,8 +13,11 @@ function Home()
 {
       const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
     return (
-        <>
-           <Navbar></Navbar>
+      <>
+        {
+          isLoggedIn ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)
+        }
+    
       <Main></Main>
       <Icons></Icons>
       <Services></Services>
@@ -26,7 +28,5 @@ function Home()
             </>
     )
 }
-
-
 
 export default Home;
