@@ -10,8 +10,7 @@ import Spinner from "../Components/Spinner";
 
 function Login() {
     const navigate = useNavigate();
-
-    const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
+    const [token, setToken] = useState(AppContext);
     const [showPassword, setshowPassword] = useState(false);
     const { savedUser, setSavedUser } = useContext(AppContext);
      const [loading, setLoading] = useState(false);
@@ -77,7 +76,7 @@ navigate("/signup");
         if (saveUser.ok)
         {
             setSavedUser(formData);
-            setIsLoggedIn(true);
+    setToken(localStorage.getItem("token"));
                   toast.success('Login Successful!', {
 position: "top-center",
 autoClose: 5000,
@@ -89,6 +88,7 @@ progress: undefined,
 theme: "light",
 
                   });
+    
             navigate("/Astrologers")
         }
         else {
