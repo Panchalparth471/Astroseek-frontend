@@ -12,7 +12,7 @@ import img3 from "../Assets/Ellipse 45.png";
 import { useNavigate } from "react-router-dom";
 import Hamburger from 'hamburger-react';
 import { Link } from "react-router-dom";
-import { useState } from "react";
+
 
 
 function Astrologer() {
