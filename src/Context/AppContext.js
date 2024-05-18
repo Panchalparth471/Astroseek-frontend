@@ -5,7 +5,8 @@ export const AppContext = createContext();
 
 export default function AppContextProvider({ children })
 {
-    const [formData, setFormData] = useState({ firstName: formData.firstName, lastName:formData.lastName, email:formData.email, password: "", accountType: "Person" });
+       const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", password: "", accountType: "Person" });
+    
     const [savedUser, setSavedUser] = useState(null);
     const [token, setToken] = useState("");
     const [name, setName] = useState("");
