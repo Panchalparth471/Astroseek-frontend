@@ -12,15 +12,31 @@ function Login() {
     const { setToken, setSavedUser, setFormData, formData } = useContext(AppContext);
     const [showPassword, setshowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+         const [types, settype] = useState("password");
 
-    const typeChange = () => {
-        setshowPassword(prev => !prev);
-    };
+    function typeChange()
+    {
+        setshowPassword(prev => !prev)
+        if (types === "password")
+        {
+            settype("text")
+        }
+        else {
+            settype("password")
+        }
+    }
 
     const changeHandler = (event) => {
         const { name, value } = event.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
+
+     function submitHandler(event) {
+    event.preventDefault();
+
+    console.log("Finally printing the value of Form Data:");
+    console.log(formData)
+    }
 
     const handleClick = () => {
         navigate("/signup");
