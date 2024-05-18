@@ -48,6 +48,8 @@ function Login() {
 
     const tokenHandler = (t) => {
         setToken(t);
+        console.log("TOKEN of context",token);
+        console.log("Token of arg",t);
     };
 
     const createUser = async (event) => {
