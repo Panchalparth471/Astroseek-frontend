@@ -1,9 +1,11 @@
-
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../Context/AppContext";
 import { toast } from "react-toastify";
 import Spinner from "../Components/Spinner";
+import Navbar from "../Components/Navbar";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import Footer from "../Components/Footer";
 
 function Login() {
     const navigate=useNavigate();
@@ -13,6 +15,8 @@ function Login() {
         email: "",
         password: ""
     });
+    const [showPassword, setshowPassword] = useState(false);
+     const [types, settype] = useState("password");
 
     // Check if the user is already logged in
     useEffect(() => {
@@ -21,6 +25,18 @@ function Login() {
          navigate("/Astrologers")
         }
     }, [isLoggedIn]);
+
+        function typeChange()
+    {
+        setshowPassword(prev => !prev)
+        if (types === "password")
+        {
+            settype("text")
+        }
+        else {
+            settype("password")
+        }
+    }
 
     const createUser = async (event) => {
         setLoading(true);
@@ -82,6 +98,18 @@ theme: "light", });
         setFormData((prev) => ({ ...prev, [name]: value }));
     }
 
+       function submitHandler(event) {
+    event.preventDefault();
+
+    console.log("Finally printing the value of Form Data:");
+    console.log(formData)
+    }
+
+const handleClick = () => {
+navigate("/signup");
+    };
+
+    
     return (
         <>
             <Navbar></Navbar>
