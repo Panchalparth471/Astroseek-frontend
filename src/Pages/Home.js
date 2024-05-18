@@ -11,12 +11,10 @@ import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
 function Home()
 {
-      const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
+      const { token, setToken } = useContext(AppContext);
     return (
       <>
-        {
-          isLoggedIn ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)
-        }
+        {token ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)}
     
       <Main></Main>
       <Icons></Icons>
