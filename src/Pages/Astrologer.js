@@ -26,6 +26,7 @@ function Astrologer()
   let response;
     
       const Handler = () => {
+        console.log("Handler")
     navigate("/login");
   };
 
@@ -51,7 +52,7 @@ function Astrologer()
 
     const [isOpen, setOpen] = useState(false)
       useEffect(() => {
-        if (!token) {
+        if ( token == localStorage.getItem("token") ) {
           Handler();
         } else {
             setLoading(false);
