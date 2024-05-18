@@ -71,11 +71,11 @@ function Login() {
             const response = await saveUser.json();
             const token = response.token;
             localStorage.setItem('token', token);
-            userHandler(response);
             
 
             if (saveUser.ok) {
                 const t= localStorage.getItem('token');
+                userHandler(response);
                 tokenHandler(t);
                 toast.success('Login Successful!', {
                     position: "top-center",
