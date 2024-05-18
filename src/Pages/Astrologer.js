@@ -52,10 +52,11 @@ function Astrologer()
 
     const [isOpen, setOpen] = useState(false)
       useEffect(() => {
-        if ( token == localStorage.getItem("token") ) {
+        if ( token != localStorage.getItem("token") ) {
           Handler();
         } else {
             setLoading(false);
+           fetchAstrologers();
         }
     },[token]);
   
