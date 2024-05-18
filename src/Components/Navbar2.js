@@ -10,12 +10,11 @@ function Navbar2() {
     const [isOpen, setOpen] = useState(false)
     const navigate = useNavigate();
     const { formData, setFormData } = useContext(AppContext);
-    
-    const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
+
 
     const imageHandler = () => {
          
-        setIsLoggedIn(false);
+ localStorage.removeItem('token');
         navigate("/login");
         toast.success('Log Out Successful!', {
 position: "top-center",
