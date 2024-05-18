@@ -8,7 +8,7 @@ import Spinner from "../Components/Spinner";
 
 function Horoscope()
 {
-    const { token, setToken } = useContext(AppContext);
+    const t = localStorage.getItem("token");
     const [zodiac, setZodiac] = useState("1.aries");
     const [day, dayHandler] = useState("today");
     const [click, setClick] = useState(false);
@@ -60,7 +60,7 @@ try {
     return (
 
               <>
-      {token ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)}
+      {t ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)}
     
             {
                 loading ? (<Spinner></Spinner>) : (
