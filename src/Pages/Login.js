@@ -52,6 +52,9 @@ function Login() {
         console.log("Token of arg",t);
     };
 
+    const userHandler=(response)=>{
+        setSavedUser(saveUser);
+    }
     const createUser = async (event) => {
         event.preventDefault();
         setLoading(true);
@@ -68,7 +71,7 @@ function Login() {
             localStorage.setItem('token', token);
 
             if (saveUser.ok) {
-                setSavedUser(formData);
+                userHandler(response);
                 const t= localStorage.getItem('token');
                 tokenHandler(t);
                 toast.success('Login Successful!', {
