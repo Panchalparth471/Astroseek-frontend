@@ -48,13 +48,11 @@ function Login() {
 
     const tokenHandler = (t) => {
         setToken(t);
-        console.log("TOKEN of context",token);
-        console.log("Token of arg",t);
     };
 
     const userHandler = (response)=> {
-        setSavedUser(response);
-        console.log("RES",response);
+        setSavedUser({response});
+        console.log("RES",savedUser);
     };
     
     const createUser = async (event) => {
@@ -71,11 +69,10 @@ function Login() {
             const response = await saveUser.json();
             const token = response.token;
             localStorage.setItem('token', token);
-            
+             userHandler(response);
 
             if (saveUser.ok) {
                 const t= localStorage.getItem('token');
-                userHandler(response);
                 tokenHandler(t);
                 toast.success('Login Successful!', {
                     position: "top-center",
