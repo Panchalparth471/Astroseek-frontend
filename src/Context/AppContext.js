@@ -1,4 +1,3 @@
-
 import { createContext } from "react";
 import { useState } from "react";
 
@@ -8,15 +7,15 @@ export default function AppContextProvider({ children })
 {
     const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", password: "", accountType: "Person" });
     const [savedUser, setSavedUser] = useState(null);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [token, setToken] = useState("");
     const [name, setName] = useState("");
     const value = {
         formData,
         setFormData,
         savedUser,
         setSavedUser,
-        isLoggedIn,
-        setIsLoggedIn,
+        token,
+        setToken,
         name,
         setName
     }
@@ -25,4 +24,3 @@ export default function AppContextProvider({ children })
          {children}
      </AppContext.Provider>
 }
-
