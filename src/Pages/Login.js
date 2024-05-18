@@ -76,8 +76,9 @@ navigate("/signup");
         if (saveUser.ok)
         {
             setSavedUser(formData);
-    setToken(localStorage.getItem("token"));
-            console.log(token);
+    const t=localStorage.getItem("token");
+            setToken(t);
+            console.log("Token", t);
                   toast.success('Login Successful!', {
 position: "top-center",
 autoClose: 5000,
