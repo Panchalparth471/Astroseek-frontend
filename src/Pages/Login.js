@@ -1,132 +1,86 @@
 
-import Footer from "../Components/Footer";
-import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import Navbar from "../Components/Navbar";
-import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { useEffect, useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { AppContext } from "../Context/AppContext";
 import { toast } from "react-toastify";
 import Spinner from "../Components/Spinner";
 
 function Login() {
-    const navigate = useNavigate();
+    const history = useHistory();
+    const { isLoggedIn, setIsLoggedIn, savedUser, setSavedUser } = useContext(AppContext);
+    const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    });
 
-    const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
-    const [showPassword, setshowPassword] = useState(false);
-    const { savedUser, setSavedUser } = useContext(AppContext);
-     const [loading, setLoading] = useState(false);
-    const { formData, setFormData } = useContext(AppContext);
-    const { userData, setUserData } = useContext(AppContext);
-
-     const [types, settype] = useState("password");
-
-    function typeChange()
-    {
-        setshowPassword(prev => !prev)
-        if (types === "password")
-        {
-            settype("text")
+    // Check if the user is already logged in
+    useEffect(() => {
+        if (isLoggedIn) {
+            // Redirect the user to the desired page if already logged in
+            history.push("/Astrologers");
         }
-        else {
-            settype("password")
+    }, [isLoggedIn, history]);
+
+    const createUser = async (event) => {
+        setLoading(true);
+        try {
+            event.preventDefault();
+            const saveUser = await fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData)
+            });
+            const response = await saveUser.json();
+
+            console.log("FORM RESPONSE......", response);
+
+            if (saveUser.ok) {
+                // Set user data and login status
+                setSavedUser(formData);
+                setIsLoggedIn(true);
+                // Store token in local storage
+                localStorage.setItem("token", response.token);
+                toast.success('Login Successful!', { position: "top-center",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "light",});
+                // Redirect the user to the dashboard
+                history.push("/Astrologers");
+            } else {
+                toast.error('Wrong Password!', {position: "top-center",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "light",});
+            }
+        } catch (error) {
+            toast.error('Something Went Wrong', { position: "top-center",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "light", });
+            console.error("Error creating user:", error);
         }
+        setLoading(false);
     }
 
-     function changeHandler(event) {
-    const { name, value, type } = event.target;
-    setFormData(
-      (prev)=>({...prev,[name]:value})
-    )
-    } 
-    
-     function submitHandler(event) {
-    event.preventDefault();
-
-    console.log("Finally printing the value of Form Data:");
-    console.log(formData)
+    const changeHandler = (event) => {
+        const { name, value } = event.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
     }
-    
-
-const handleClick = () => {
-navigate("/signup");
-    };
-
-    const forgotPassword = () => {
-        navigate("/forgot")
-    };
-
-
-  const createUser = async (event) => {
-       setLoading(true);
-    try {
-       
-        event.preventDefault();
-        const saveUser = await fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData)
-        });
-        const response =await saveUser.json();
-     
-
-        console.log("FORM RESPONSE......", response);
-
-
-        if (saveUser.ok)
-        {
-            setSavedUser(formData);
-            setIsLoggedIn(true);
-                  toast.success('Login Successful!', {
-position: "top-center",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "light",
-
-                  });
-            navigate("/Astrologers")
-        }
-        else {
-           
-                toast.error('Wrong Password!', {
-position: "top-center",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "light",
-
-});
-        }
-      
-       
-    } catch (error) {
-               toast.error('Something Went Wrong', {
-position: "top-center",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "light",
-
-});
-        console.error("Error creating user:", error);
-       
-
-
-        }
-        
-         setLoading(false);
-}
 
     return (
         <>
