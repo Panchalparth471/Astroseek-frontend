@@ -1,3 +1,12 @@
+import Footer from "../Components/Footer";
+import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import Navbar from "../Components/Navbar";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { AppContext } from "../Context/AppContext";
+import { toast } from "react-toastify";
+import Spinner from "../Components/Spinner";
+
 function Login() {
     const navigate = useNavigate();
     const { setToken, setSavedUser, setFormData, formData } = useContext(AppContext);
