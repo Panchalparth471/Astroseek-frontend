@@ -11,10 +11,10 @@ import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
 function Home()
 {
-        const t = localStorage.getItem("token");
+        const{token} = localStorage.getItem("token");
     return (
       <>
-   {t ? <Navbar2 /> : <Navbar />}
+   {token ? <Navbar2 /> : <Navbar />}
     
       <Main></Main>
       <Icons></Icons>
