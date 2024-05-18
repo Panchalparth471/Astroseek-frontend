@@ -54,6 +54,7 @@ function Login() {
 
     const userHandler=(response)=>{
         setSavedUser(response);
+        console.log("RES",response);
     }
     const createUser = async (event) => {
         event.preventDefault();
@@ -69,9 +70,9 @@ function Login() {
             const response = await saveUser.json();
             const token = response.token;
             localStorage.setItem('token', token);
+            userHandler(response);
 
             if (saveUser.ok) {
-                userHandler(response);
                 const t= localStorage.getItem('token');
                 tokenHandler(t);
                 toast.success('Login Successful!', {
