@@ -7,9 +7,9 @@ import Astrologers from "../Components/Astrologers";
 import Why from "../Components/Why";
 import Footer from "../Components/Footer";
 import Navbar2 from "../Components/Navbar2";
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { AppContext } from "../Context/AppContext";
-import {useEffect} from "react-router-dom";
+
 
 function Home()
 {
