@@ -52,9 +52,9 @@ function Login() {
         console.log("Token of arg",t);
     };
 
-    const userHandler=(data)=>{
-        setSavedUser(data);
-        console.log("RES",data);
+    const userHandler=(response)=>{
+        setSavedUser(response);
+        console.log("RES",response);
     }
     const createUser = async (event) => {
         event.preventDefault();
@@ -70,8 +70,7 @@ function Login() {
             const response = await saveUser.json();
             const token = response.token;
             localStorage.setItem('token', token);
-            const data=response.user;
-            userHandler(data);
+            userHandler(response);
             
 
             if (saveUser.ok) {
