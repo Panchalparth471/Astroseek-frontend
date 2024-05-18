@@ -44,7 +44,7 @@ navigate("/signup");
                 <div className="p-2 flex justify-center items-center cursor-pointer hover:scale-110 transition-all"><a href='/compatibility'>Compatibility</a></div>
                 <div className="p-2 flex justify-center items-center  cursor-pointer hover:scale-110 transition-all"><a href='/horoscope'>Horoscope</a></div>
                 <div className="p-2 flex justify-center items-center cursor-pointer hover:scale-110 transition-all">Chat with Astrologer</div>
-                 <div className=" gap-2 p-2 relative flex justify-center items-center">
+                 <div onClick={imageHandler} className=" cursor-pointer gap-2 p-2 relative flex justify-center items-center">
                  Log Out
                 </div>
             </div>
@@ -63,7 +63,7 @@ navigate("/signup");
                 <a href="/compatibility" className="place-self-center">Compatibility</a>
                 <a href="/horoscope" className="place-self-center">Horoscope</a>
                 <a href="/" className="place-self-center">Chat With Astrologer</a>
-       <div className=" gap-2 p-2 relative flex justify-center max-[300px]:text-[12px] items-center">
+       <div onClick={imageHandler} className="cursor-pointer gap-2 p-2 relative flex justify-center max-[300px]:text-[12px] items-center">
                 Log Out
                                 </div>
 
