@@ -52,10 +52,11 @@ function Login() {
         console.log("Token of arg",t);
     };
 
-    const userHandler=(response)=>{
+    const userHandler = (response)=> {
         setSavedUser(response);
         console.log("RES",response);
-    }
+    };
+    
     const createUser = async (event) => {
         event.preventDefault();
         setLoading(true);
