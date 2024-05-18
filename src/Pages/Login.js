@@ -64,10 +64,13 @@ function Login() {
                 body: JSON.stringify(formData)
             });
             const response = await saveUser.json();
+            const token = response.token;
+            localStorage.setItem('token', token);
 
             if (saveUser.ok) {
                 setSavedUser(formData);
-                const t = localStorage.getItem("token");
+                localStorage.setItem('token', yourTokenValue);
+                const t= localStorage.getItem('token');
                 tokenHandler(t);
                 toast.success('Login Successful!', {
                     position: "top-center",
