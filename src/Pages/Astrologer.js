@@ -20,27 +20,26 @@ function Astrologer() {
     const { name, setName, token } = useContext(AppContext);
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [isOpen, setOpen] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (token) {
-            // Token exists, fetch astrologers
             fetchAstrologers();
         }
     }, [token]);
-
-    const Handler = () => {
-        navigate("/login");
-    };
 
     const fetchAstrologers = async () => {
         setLoading(true);
         try {
             const allAstrologers = await fetch(`${process.env.REACT_APP_BASE_URL}/getAllAstrologers`);
+            if (!allAstrologers.ok) {
+                throw new Error("Failed to fetch astrologers");
+            }
             const response = await allAstrologers.json();
             setData(response.astrologers);
         } catch (e) {
-            console.log(e);
+            console.error(e);
+            setError("Failed to fetch astrologers");
         } finally {
             setLoading(false);
         }
