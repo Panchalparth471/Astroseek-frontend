@@ -69,7 +69,6 @@ function Login() {
 
             if (saveUser.ok) {
                 setSavedUser(formData);
-                localStorage.setItem('token', yourTokenValue);
                 const t= localStorage.getItem('token');
                 tokenHandler(t);
                 toast.success('Login Successful!', {
