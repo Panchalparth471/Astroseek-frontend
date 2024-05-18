@@ -73,7 +73,9 @@ try {
     return (
 
               <>
-              <Navbar></Navbar>
+              {
+          isLoggedIn ? (<Navbar2></Navbar2>) : (<Navbar></Navbar>)
+        }
             {
                 loading?(<Spinner></Spinner>):( <div className="flex min-h-[450px] px-3 mt-32 flex-col items-center justify-evenly"> 
                 <div className="text-[50px] max-md:text-[30px] font-bold">Compatibility</div>
