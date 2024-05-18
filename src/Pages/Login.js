@@ -10,7 +10,7 @@ import Spinner from "../Components/Spinner";
 
 function Login() {
     const navigate = useNavigate();
-    const [token, setToken] = useState(AppContext);
+    const {token, setToken} = useState(AppContext);
     const [showPassword, setshowPassword] = useState(false);
     const { savedUser, setSavedUser } = useContext(AppContext);
      const [loading, setLoading] = useState(false);
