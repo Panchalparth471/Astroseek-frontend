@@ -53,7 +53,7 @@ function Login() {
     };
 
     const userHandler=(response)=>{
-        setSavedUser(saveUser);
+        setSavedUser(response);
     }
     const createUser = async (event) => {
         event.preventDefault();
