@@ -36,6 +36,7 @@ navigate("/signup");
     
     return (
     
+             
                <div className="flex fixed bg-white z-[1000] flex-row justify-between w-[100vw] h-[80px] shadow-md">
             <div className="p-2 ml-5 text-[30px] max-lg:text-[20px] max-lg:ml-4 flex justify-center items-center">AstroSeek</div>
             <div className="flex text-[20px] max-lg:text-[13px] gap-4 max-lg:gap-2 mr-10 max-md:hidden">
@@ -44,8 +45,7 @@ navigate("/signup");
                 <div className="p-2 flex justify-center items-center  cursor-pointer hover:scale-110 transition-all"><a href='/horoscope'>Horoscope</a></div>
                 <div className="p-2 flex justify-center items-center cursor-pointer hover:scale-110 transition-all">Chat with Astrologer</div>
                  <div className=" gap-2 p-2 relative flex justify-center items-center">
-      Logout
-                   </div>
+                 Log Out
                 </div>
             </div>
            
@@ -64,9 +64,7 @@ navigate("/signup");
                 <a href="/horoscope" className="place-self-center">Horoscope</a>
                 <a href="/" className="place-self-center">Chat With Astrologer</a>
        <div className=" gap-2 p-2 relative flex justify-center max-[300px]:text-[12px] items-center">
-                      Logout
-        
-                                </div>
+                Log Out
                                 </div>
 
                 
