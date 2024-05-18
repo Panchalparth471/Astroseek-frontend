@@ -1,12 +1,12 @@
 
 import { useEffect, useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../Context/AppContext";
 import { toast } from "react-toastify";
 import Spinner from "../Components/Spinner";
 
 function Login() {
-    const history = useHistory();
+    const navigate=useNavigate();
     const { isLoggedIn, setIsLoggedIn, savedUser, setSavedUser } = useContext(AppContext);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -18,9 +18,9 @@ function Login() {
     useEffect(() => {
         if (isLoggedIn) {
             // Redirect the user to the desired page if already logged in
-            history.push("/Astrologers");
+         navigate("/Astrologers")
         }
-    }, [isLoggedIn, history]);
+    }, [isLoggedIn]);
 
     const createUser = async (event) => {
         setLoading(true);
@@ -52,7 +52,7 @@ draggable: true,
 progress: undefined,
 theme: "light",});
                 // Redirect the user to the dashboard
-                history.push("/Astrologers");
+                navigate("/Astrologers")
             } else {
                 toast.error('Wrong Password!', {position: "top-center",
 autoClose: 5000,
