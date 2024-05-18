@@ -9,9 +9,16 @@ import Footer from "../Components/Footer";
 import Navbar2 from "../Components/Navbar2";
 import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
+import {useEffect} from "react-router-dom";
+
 function Home()
 {
         const t = localStorage.getItem("token");
+
+        useEffect(()=>{
+        const {savedUser}=useContext(AppContext);
+        console.log("SAVED HOME",savedUser);
+        });
 
 
     return (
