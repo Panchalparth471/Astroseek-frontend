@@ -9,7 +9,6 @@ import Spinner from "../Components/Spinner";
 function Horoscope()
 {
     const { token, setToken } = useContext(AppContext);
-    console.log("islogged",isLoggedIn);
     const [zodiac, setZodiac] = useState("1.aries");
     const [day, dayHandler] = useState("today");
     const [click, setClick] = useState(false);
