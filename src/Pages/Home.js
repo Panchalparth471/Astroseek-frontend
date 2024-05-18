@@ -12,8 +12,8 @@ import { AppContext } from "../Context/AppContext";
 function Home()
 {
         const t = localStorage.getItem("token");
-        const {savedUser}=useContext(AppContext);
-        console.log("SAVED HOME",savedUser);
+
+
     return (
       <>
    { t ? <Navbar2 /> : <Navbar />}
